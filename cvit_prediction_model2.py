@@ -27,8 +27,8 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 from helpers.blazeface import BlazeFace
 facedet = BlazeFace().to(device)
-facedet.load_weights("C:/Users/Anahita/thesis/CViT/CViT/helpers/blazeface.pth")
-facedet.load_anchors("C:/Users/Anahita/thesis/CViT/CViT/helpers/anchors.npy")
+facedet.load_weights("helpers/blazeface.pth")
+facedet.load_anchors("helpers/anchors.npy")
 _ = facedet.train(False)
 
 mean = [0.485, 0.456, 0.406]
@@ -39,7 +39,7 @@ normalize_transform = transforms.Compose([
 )
 
 tresh=50
-sample='C:/Users/Anahita/thesis/CViT/sample__prediction_data/'
+sample='sample__prediction_data/'
 
 ran = random.randint(0,400)
 ran_min = abs(ran-1)

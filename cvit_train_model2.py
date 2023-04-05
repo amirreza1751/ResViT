@@ -172,14 +172,14 @@ def train_gpu(model, criterion, optimizer, scheduler, num_epochs, min_val_loss):
     # load best model weights
     model.load_state_dict(best_model_wts)
 
-    with open('C:/Users/Anahita/thesis/CViT/weight/weights.pkl', 'wb') as f:
+    with open('weight/weights.pkl', 'wb') as f:
         pickle.dump([train_loss, train_accu, val_loss, val_accu], f)
 
     state = {'epoch': num_epochs+1, 
              'state_dict': model.state_dict(),
              'optimizer': optimizer.state_dict(),
              'min_loss':epoch_loss}
-    torch.save(state, 'C:/Users/Anahita/thesis/CViT/weight/weights.pth')
+    torch.save(state, 'weight/weights.pth')
     test(model)
     # summarize history for accuracy
     f1 = plt.figure()
@@ -189,7 +189,7 @@ def train_gpu(model, criterion, optimizer, scheduler, num_epochs, min_val_loss):
     plt.ylabel('accuracy')
     plt.xlabel('epoch')
     plt.legend(['Train', 'Validation'], loc='upper left')
-    plt.savefig( 'C:/Users/Anahita/Desktop/accu_resnet50_face2face.png' )
+    plt.savefig( 'accu_resnet50_face2face.png' )
     # # summarize history for loss
     f2 = plt.figure()
     plt.plot([*range(0, num_epochs, 1)], train_loss)
@@ -198,7 +198,7 @@ def train_gpu(model, criterion, optimizer, scheduler, num_epochs, min_val_loss):
     plt.ylabel('loss resnet 50')
     plt.xlabel('epoch')
     plt.legend(['Train', 'Validation'], loc='upper left')
-    plt.savefig( 'C:/Users/Anahita/Desktop/loss_resnet50_face2face.png' )
+    plt.savefig( 'loss_resnet50_face2face.png' )
     
     return train_loss,train_accu,val_loss,val_accu, min_loss
 
