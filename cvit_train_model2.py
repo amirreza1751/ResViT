@@ -172,7 +172,7 @@ def train_gpu(model, criterion, optimizer, scheduler, num_epochs, min_val_loss):
     # load best model weights
     model.load_state_dict(best_model_wts)
 
-    with open('weight/weights.pkl', 'wb') as f:
+    with open('/kaggle/working/ResViT/weight/weights.pkl', 'wb') as f:
         pickle.dump([train_loss, train_accu, val_loss, val_accu], f)
 
     state = {'epoch': num_epochs+1, 
