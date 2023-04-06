@@ -179,7 +179,7 @@ def train_gpu(model, criterion, optimizer, scheduler, num_epochs, min_val_loss):
              'state_dict': model.state_dict(),
              'optimizer': optimizer.state_dict(),
              'min_loss':epoch_loss}
-    torch.save(state, 'weight/weights.pth')
+    torch.save(state, '/kaggle/working/ResViT/weight/weights.pth')
     test(model)
     # summarize history for accuracy
     f1 = plt.figure()
